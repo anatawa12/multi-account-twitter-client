@@ -1,5 +1,9 @@
 use yew::prelude::*;
 
+#[cfg(not(target_arch = "wasm32"))]
+#[doc(hidden)]
+mod ij_mock;
+
 enum Msg {
     AddOne,
 }
