@@ -26,6 +26,9 @@ macro_rules! html {
         let _ = $attr_name;
         html! { @attrs [$($tag)+] ($($rest)*) }
     };
+    (@attrs [$tag0: ident $($tag: tt)+] (/>$($rest: tt)*)) => {
+        html! { @body [$($tag)+] ($($rest)*) }
+    };
 
     (@attr_pre_eq [$($tag: tt)+] [$($attr_name: ident)-+] (= $($rest: tt)*)) => {
         html! { @attr_value [$($tag)+] [$($attr_name)-+] ($($rest)*) }
