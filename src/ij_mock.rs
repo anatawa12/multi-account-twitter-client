@@ -48,7 +48,7 @@ macro_rules! html {
     };
 
     (@body [$($tag: tt)+] ({ for $($expr: tt)*} $($rest: tt)*)) => {
-        let _ = ($($expr)*); // TODO: type check
+        $crate::ij_mock::iter_expected($($expr)*); // TODO: type check
         html! { @body [$($tag)+] ($($rest)*) }
     };
     (@body [$($tag: tt)+] ({$($expr: tt)*} $($rest: tt)*)) => {
@@ -213,3 +213,4 @@ pub mod tags {
 pub fn html() -> Html {
     unreachable!()
 }
+pub fn iter_expected<T>(_iter: impl IntoIterator<Item = T>) {}
