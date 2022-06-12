@@ -47,6 +47,10 @@ macro_rules! html {
         html! { @attrs [$($tag)+] ($($rest)*) }
     };
 
+    (@body [$($tag: tt)+] ({ for $($expr: tt)*} $($rest: tt)*)) => {
+        let _ = ($($expr)*); // TODO: type check
+        html! { @body [$($tag)+] ($($rest)*) }
+    };
     (@body [$($tag: tt)+] ({$($expr: tt)*} $($rest: tt)*)) => {
         let _ = ($($expr)*); // TODO: type check
         html! { @body [$($tag)+] ($($rest)*) }
