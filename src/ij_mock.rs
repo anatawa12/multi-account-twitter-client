@@ -10,6 +10,7 @@ use yew::Html;
 #[macro_export]
 macro_rules! html {
     (@root [$($tag: tt)*] (<$tag0: ident $($rest: tt)*)) => {
+        html! { @check_tag $tag0 }
         html! { @attrs [$tag0 $($tag)*] ($($rest)*) }
     };
     (@root [$($tag: tt)*] (<> $($rest: tt)*)) => {
@@ -51,6 +52,7 @@ macro_rules! html {
         html! { @body [$($tag)+] ($($rest)*) }
     };
     (@body [$($tag: tt)*] (<$tag0: ident $($rest: tt)*)) => {
+        html! { @check_tag $tag0 }
         html! { @attrs [$tag0 $($tag)*] ($($rest)*) }
     };
     (@body [$tag0: ident $($tag: tt)+] (</$tag1: ident> $($rest: tt)*)) => {
@@ -60,6 +62,14 @@ macro_rules! html {
         $crate::ij_mock::html()
     };
 
+    (@check_tag $tag: ident) => {
+        {
+            use $crate::ij_mock::tags::*;
+            fn _unused() -> $tag {
+                todo!()
+            }
+        }
+    };
 
     (@attr_type onabort $($expr: tt)*) => {html!(@attr_type @event onabort $($expr)*)};
     (@attr_type onauxclick $($expr: tt)*) => {html!(@attr_type @event onauxclick $($expr)*)};
@@ -169,6 +179,31 @@ macro_rules! html {
             html! { @root [] ($($rest)*) }
         }
     };
+}
+
+#[allow(non_camel_case_types, dead_code)]
+pub mod tags {
+    macro_rules! structs {
+        ($name: ident $($rest: ident)*) => {
+            pub struct $name {}
+            structs!{$($rest)*}
+        };
+        () => {};
+    }
+    structs! {
+        a abbr address area article aside audio
+        b base bdi bdo blockquote body br button
+        canvas caption cite code col colgroup
+        data datalist dd del details dfn dialog div dl dt
+        em embed fieldset figcaption figure footer form
+        h1 h2 h3 h4 h5 h6 head header hgroup hr html i
+        iframe img input ins kbd label legend li link
+        main map mark math menu meta meter nav noscript
+        object ol optgroup option output p picture pre progress
+        q rp rt ruby s samp script section select slot small source
+        span strong style sub summary sup svg table tbody td template
+        textarea tfoot th thead time title tr track u ul var video wbr
+    }
 }
 
 pub fn html() -> Html {
