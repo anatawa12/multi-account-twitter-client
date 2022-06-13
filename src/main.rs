@@ -1,45 +1,49 @@
 use yew::prelude::*;
+use crate::utils::*;
 
 #[cfg(not(target_arch = "wasm32"))]
 #[doc(hidden)]
 mod ij_mock;
+
+mod utils;
 
 enum Msg {
     AddOne,
 }
 
 struct Model {
-    value: i64,
 }
 
 impl Component for Model {
-    type Message = Msg;
+    type Message = ();
     type Properties = ();
 
     fn create(_ctx: &Context<Self>) -> Self {
         Self {
-            value: 0,
-        }
-    }
-
-    fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
-        match msg {
-            Msg::AddOne => {
-                self.value += 1;
-                // the value has changed so we need to
-                // re-render for it to appear on the page
-                true
-            }
         }
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
-        // This gives us a component's "`Scope`" which allows us to send messages, etc to the component.
-        let link = ctx.link();
         html! {
             <div>
-                <button onclick={link.callback(|_| Msg::AddOne)}>{ "+1" }</button>
-                <p>{ self.value }</p>
+                <VStack class="col">
+                    <VStack class="tweet">
+                        <HStack class="tweet-header">
+                            <img class="tweet-author-icon" src="https://pbs.twimg.com/profile_images/1252746582815993856/sqWds6u9_bigger.jpg" />
+                            <HStack class="account-info">
+                                <b class="account-name">{"anatawa12 a.k.a. 翳河翔 プログラム言語ヲタク"}</b>
+                                <span>{"@kakerigawa"}</span>
+                            </HStack>
+                        </HStack>
+                        <div class="tweet-content">
+                            {"apk: androidのアプリ"} <br/>
+                            {"ipa: iOSのアプリ"} <br/>
+                            {"app: apple/darwin系のアプリケーションバンドル(ディレクトリ)"}
+                        </div>
+                        <HStack>
+                        </HStack>
+                    </VStack>
+                </VStack>
             </div>
         }
     }

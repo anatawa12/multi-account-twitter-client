@@ -3,5 +3,57 @@
 <head>
     <meta charset="utf-8" />
     <title>Yew App</title>
+    <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+    <style>
+        :root {
+            font-family: sans-serif;
+            --matc-col-width: 300px;
+            --matc-icon-size: 32px;
+        }
+
+        .matc-hstack {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            align-self: stretch;
+        }
+        .matc-vstack {
+            display: flex;
+            flex: 1 1 auto;
+            flex-direction: column;
+            align-self: stretch;
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+            width: var(--matc-col-width);
+        }
+
+        .tweet {
+            padding-left: calc(var(--matc-icon-size) + 10px);
+        }
+        .tweet-header {
+
+        }
+        .account-info {
+            overflow: hidden;
+            white-space: nowrap;
+            word-break: break-word;
+            text-overflow: ellipsis;
+            word-wrap: normal;
+        }
+        .tweet-author-icon {
+            margin-left: calc(var(--matc-icon-size) * -1 - 10px);
+            margin-right: 10px;
+            margin-bottom: calc(var(--matc-icon-size) * -0.3);
+
+            width: var(--matc-icon-size);
+            height: var(--matc-icon-size);
+            border-radius: 50%;
+        }
+        .account-name {
+        }
+    </style>
 </head>
 </html>
