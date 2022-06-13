@@ -9,6 +9,14 @@
             font-family: sans-serif;
             --matc-col-width: 300px;
             --matc-icon-size: 32px;
+
+            --matc-gray: gray;
+            --matc-light-blue: #1da1f2;
+        }
+
+        a, a:visited, a:hover, a:active {
+            color: inherit;
+            text-decoration: inherit;
         }
 
         .matc-hstack {
@@ -53,6 +61,14 @@
             border-radius: 50%;
         }
         .account-name {
+        }
+
+        .replying-to {
+            color: var(--matc-gray);
+            font-size: 0.7rem;
+        }
+        .replying-to > a {
+            color: var(--matc-light-blue);
         }
     </style>
 </head>

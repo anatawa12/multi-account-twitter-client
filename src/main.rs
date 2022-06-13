@@ -35,6 +35,7 @@ impl Component for Model {
                                 <span>{"@kakerigawa"}</span>
                             </div>
                         </HStack>
+                        <div class="replying-to">{"Replaying to "}<a href="#">{"@kakerigawa"}</a></div>
                         <div class="tweet-content">
                             {"apk: androidのアプリ"} <br/>
                             {"ipa: iOSのアプリ"} <br/>
