@@ -68,6 +68,7 @@ macro_rules! html {
 
     (@check_tag $tag: ident) => {
         {
+            #[allow(unused_imports)]
             use $crate::ij_mock::tags::*;
             fn _unused() -> $tag {
                 todo!()
