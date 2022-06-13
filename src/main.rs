@@ -23,17 +23,17 @@ impl Component for Model {
         }
     }
 
-    fn view(&self, ctx: &Context<Self>) -> Html {
+    fn view(&self, _ctx: &Context<Self>) -> Html {
         html! {
             <div>
                 <VStack class="col">
                     <VStack class="tweet">
                         <HStack class="tweet-header">
                             <img class="tweet-author-icon" src="https://pbs.twimg.com/profile_images/1252746582815993856/sqWds6u9_bigger.jpg" />
-                            <HStack class="account-info">
+                            <div class="account-info">
                                 <b class="account-name">{"anatawa12 a.k.a. 翳河翔 プログラム言語ヲタク"}</b>
                                 <span>{"@kakerigawa"}</span>
-                            </HStack>
+                            </div>
                         </HStack>
                         <div class="tweet-content">
                             {"apk: androidのアプリ"} <br/>
