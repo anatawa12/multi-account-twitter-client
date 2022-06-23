@@ -42,6 +42,10 @@ impl Component for Model {
                             {"app: apple/darwin系のアプリケーションバンドル(ディレクトリ)"}
                         </div>
                         <HStack>
+                            <div class="icon">{"💬"}</div>
+                            <div class="icon">{"🔃"}</div>
+                            <div class="icon">{"♡"}</div>
+                            <div class="icon">{"…"}</div>
                         </HStack>
                     </VStack>
                 </VStack>
